@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV != "production"){
+ if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
 
@@ -28,8 +28,8 @@ const listingRoutes = require("./routes/listing");
 const reviewRoutes = require("./routes/review");
 const userRoutes = require("./routes/user");
 
-let url = "mongodb://127.0.0.1:27017/airbnb";
-// let mongoDBUrl = process.env.ATLASDB_URL;
+// let url = "mongodb://127.0.0.1:27017/airbnb";
+let mongoDBUrl = process.env.ATLASDB_URL;
 // let mongoDBUrl = process.env.ATLASDB_URL;
 mongoose
   .connect(url)
@@ -135,8 +135,8 @@ app.use((err, req, res, next) => {
 });
 
 
+let portNo = process.env.PORT || 8080;
 
-
-app.listen(8080, () => {
+app.listen(portNo, () => {
   console.log("server connected successfully");
 });
