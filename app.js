@@ -1,4 +1,4 @@
- if(process.env.NODE_ENV != "production"){
+if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
 
@@ -32,7 +32,7 @@ const userRoutes = require("./routes/user");
 let mongoDBUrl = process.env.ATLASDB_URL;
 // let mongoDBUrl = process.env.ATLASDB_URL;
 mongoose
-  .connect(url)
+  .connect(mongoDBUrl)
   .then(() => {
     console.log("DB connected");
   })
@@ -41,7 +41,7 @@ mongoose
   });
 
 const store = MongoStore.create({
-  mongoUrl: url,
+  mongoUrl: mongoDBUrl,
   crypto: {
     secret: process.env.SECRET,  
   },
